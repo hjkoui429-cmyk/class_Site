@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#172554">
+<title>کلاس ما | پنل کلاس</title>
+<style>
+:root{--navy:#172554;--blue:#2563eb;--purple:#7c3aed;--bg:#f4f6fb;--ink:#172033;--muted:#64748b;--line:#e5eaf3}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:linear-gradient(120deg,#172554,#2563eb 58%,#7c3aed);color:#fff;padding:30px 18px 38px;border-radius:0 0 28px 28px}
+.top{max-width:980px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.brand small{opacity:.85}.brand h1{margin:8px 0;font-size:30px}.brand p{margin:0;opacity:.9;font-size:14px}
+button,.btn{border:0;border-radius:12px;padding:11px 16px;font:inherit;cursor:pointer}
+.login{background:#fff;color:#1e3a8a;font-weight:bold}.wrap{max-width:980px;margin:22px auto;padding:0 15px}
+.notice{background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px 18px;margin-bottom:18px;box-shadow:0 5px 18px #1725540a}
+.notice h2{font-size:17px;margin:0 0 8px}.notice p{margin:0;color:var(--muted);line-height:1.9}
+.section-title{display:flex;align-items:center;justify-content:space-between;margin:24px 2px 12px}.section-title h2{font-size:20px;margin:0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:13px}
+.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:17px;box-shadow:0 5px 18px #17255409}
+.card h3{margin:0 0 10px;font-size:16px}.card p{white-space:pre-wrap;line-height:1.9;color:#475569;margin:0}
+.meta{font-size:12px;color:#94a3b8;margin-top:13px}
+.empty{color:#94a3b8;text-align:center;padding:25px;background:#fff;border:1px dashed #cbd5e1;border-radius:16px}
+.panel{display:none;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;margin:20px 0;box-shadow:0 8px 28px #17255410}
+.panel.show{display:block}.panel h2{margin:0 0 15px}
+label{display:block;font-size:13px;font-weight:bold;margin:12px 0 6px}
+input,textarea{width:100%;border:1px solid #dbe2ee;border-radius:11px;padding:12px;font:inherit;background:#fbfcff}
+textarea{min-height:90px;resize:vertical}
+.primary{background:var(--blue);color:#fff;font-weight:bold}.secondary{background:#eef2ff;color:#3730a3}.danger{background:#fee2e2;color:#991b1b}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}
+footer{text-align:center;color:#94a3b8;font-size:12px;padding:25px}
+#loginBox{display:none;max-width:420px;margin:18px auto;background:#fff;padding:18px;border-radius:18px;border:1px solid var(--line)}
+#loginBox.show{display:block}.hint{font-size:12px;color:#b45309;line-height:1.8;margin-top:12px}
+@media(max-width:560px){.row{grid-template-columns:1fr}.brand h1{font-size:25px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="top">
+  <div class="brand"><small>📚 فضای اختصاصی دانش‌آموزان</small><h1>کلاس ما</h1><p>تکالیف، اطلاعیه‌ها و برنامه‌های کلاس در یک‌جا</p></div>
+  <button class="login" id="loginBtn">🔐 ورود مدیر</button>
+ </div>
+</header>
+<main class="wrap">
+ <section class="notice"><h2>👋 به سایت کلاس خوش آمدید</h2><p>برای دیدن تکالیف و اطلاعیه‌های جدید، بخش‌های زیر را بررسی کنید.</p></section>
+ <section id="loginBox">
+  <h2>ورود مدیر کلاس</h2>
+  <label for="pass">رمز آزمایشی مدیر</label><input id="pass" type="password" placeholder="رمز را وارد کن">
+  <div class="actions"><button class="primary" id="enterBtn">ورود</button><button class="secondary" id="cancelBtn">بستن</button></div>
+  <p class="hint">نسخهٔ اولیه است: رمز آزمایشی 1234 است. این ورود فقط نمایشی و مخصوص آزمایش در همین مرورگر است؛ برای انتشار عمومی باید ورود امنِ سمت سرور و پایگاه‌داده تنظیم شود.</p>
+ </section>
+ <section class="panel" id="adminPanel">
+  <h2>🛠️ پنل مدیریت کلاس</h2>
+  <div class="row">
+   <div><label for="taskTitle">عنوان تکلیف</label><input id="taskTitle" placeholder="مثلاً: ریاضی صفحه ۲۵"></div>
+   <div><label for="taskDate">مهلت انجام</label><input id="taskDate" type="date"></div>
+  </div>
+  <label for="taskText">توضیحات تکلیف</label><textarea id="taskText" placeholder="توضیحات تکلیف را بنویس..."></textarea>
+  <button class="primary" id="addTask">＋ ثبت تکلیف</button>
+  <hr style="border:0;border-top:1px solid #e5eaf3;margin:22px 0">
+  <label for="newsTitle">عنوان اطلاعیه</label><input id="newsTitle" placeholder="مثلاً: تغییر ساعت کلاس">
+  <label for="newsText">متن اطلاعیه</label><textarea id="newsText" placeholder="متن اطلاعیه را بنویس..."></textarea>
+  <button class="primary" id="addNews">＋ ثبت اطلاعیه</button>
+  <div class="actions"><button class="secondary" id="logoutBtn">خروج از پنل</button></div>
+ </section>
+ <div class="section-title"><h2>📝 تکالیف کلاس</h2></div>
+ <div class="cards" id="tasks"></div>
+ <div class="section-title"><h2>📢 اطلاعیه‌ها</h2></div>
+ <div class="cards" id="news"></div>
+ <p class="meta" style="text-align:center">نسخهٔ اولیه سایت کلاس — قابل توسعه با امکانات بیشتر</p>
+</main>
+<footer>ساخته‌شده برای کلاس ما 💙</footer>
+<script>
+const $=id=>document.getElementById(id);
+let tasks=JSON.parse(localStorage.getItem('class_tasks')||'[]');
+let news=JSON.parse(localStorage.getItem('class_news')||'[]');
+let admin=false;
+function save(){localStorage.setItem('class_tasks',JSON.stringify(tasks));localStorage.setItem('class_news',JSON.stringify(news));render()}
+function safe(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(){
+ $('tasks').innerHTML=tasks.length?tasks.map((t,i)=>`<article class="card"><h3>📘 ${safe(t.title)}</h3><p>${safe(t.text)}</p><div class="meta">مهلت: ${safe(t.date||'اعلام نشده')}</div>${admin?`<div class="actions"><button class="danger" onclick="removeTask(${i})">حذف</button></div>`:''}</article>`).join(''):'<div class="empty">هنوز تکلیفی ثبت نشده است.</div>';
+ $('news').innerHTML=news.length?news.map((n,i)=>`<article class="card"><h3>📣 ${safe(n.title)}</h3><p>${safe(n.text)}</p><div class="meta">${safe(n.date)}</div>${admin?`<div class="actions"><button class="danger" onclick="removeNews(${i})">حذف</button></div>`:''}</article>`).join(''):'<div class="empty">فعلاً اطلاعیه‌ای وجود ندارد.</div>';
+}
+window.removeTask=i=>{tasks.splice(i,1);save()};window.removeNews=i=>{news.splice(i,1);save()};
+$('loginBtn').onclick=()=>{$('loginBox').classList.toggle('show')};
+$('cancelBtn').onclick=()=>{$('loginBox').classList.remove('show')};
+$('enterBtn').onclick=()=>{if($('pass').value==='1234'){admin=true;$('adminPanel').classList.add('show');$('loginBox').classList.remove('show');$('loginBtn').style.display='none';render()}else alert('رمز اشتباه است.')};
+$('logoutBtn').onclick=()=>{admin=false;$('adminPanel').classList.remove('show');$('loginBtn').style.display='inline-block';render()};
+$('addTask').onclick=()=>{let title=$('taskTitle').value.trim(),text=$('taskText').value.trim();if(!title||!text){alert('عنوان و توضیحات تکلیف را وارد کن.');return}tasks.unshift({title,text,date:$('taskDate').value});$('taskTitle').value='';$('taskText').value='';$('taskDate').value='';save()};
+$('addNews').onclick=()=>{let title=$('newsTitle').value.trim(),text=$('newsText').value.trim();if(!title||!text){alert('عنوان و متن اطلاعیه را وارد کن.');return}news.unshift({title,text,date:new Date().toLocaleDateString('fa-IR')});$('newsTitle').value='';$('newsText').value='';save()};
+render();
+</script>
+</body></html>
